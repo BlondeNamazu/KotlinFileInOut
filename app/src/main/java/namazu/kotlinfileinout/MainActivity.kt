@@ -16,17 +16,9 @@ import kotlinx.android.synthetic.main.activity_main.*;
 
 class MainActivity : AppCompatActivity() {
 
-    //private var textView : TextView? = null;
-
-//    var textView : TextView? = null
-//    var editText : EditText?= null
     private val fileName : String = "testfile.txt";
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
-//        textView = findViewById(R.id.text_view)
-//        editText= findViewById(R.id.edit_text)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -50,11 +42,13 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    // save written string to "testfile.txt"
     public fun saveFile(file : String,str : String){
         var fileOutputstream : FileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
         fileOutputstream?.write(str.toByteArray())
     }
 
+    // read "testfile.txt" and show its content
     public fun readFile(file : String) : String? {
         var text : String? = null;
         val fileInputStream : FileInputStream? = openFileInput(file)
