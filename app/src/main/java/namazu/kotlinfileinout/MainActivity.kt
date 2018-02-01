@@ -31,12 +31,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         button_read.setOnClickListener({
-            var str : String? = readFile(fileName)
-            if(str != null){
-                text_view.setText(str)
-            } else {
-                text_view.setText(R.string.read_error)
-            }
+            var str : String = readFile(fileName)
+            if(str.length == 0) text_view.setText(R.string.read_error)
+            else text_view.setText(str)
         })
     }
 
@@ -52,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // read "testfile.txt" and show its content
-    public fun readFile(file : String) : String? {
+    public fun readFile(file : String) : String {
         var text : String = ""
         try{
             val reader = openFileInput(file).bufferedReader()
